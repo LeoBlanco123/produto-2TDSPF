@@ -12,7 +12,7 @@ public class Main {
         EntityManager manager = factory.createEntityManager();
 
         Produto produto = new Produto();
-        produto.setNome( "Notebook HP" );
+        produto.setNome( "Notebook HP" ).setPreco(6999.99);
 
         manager.getTransaction().begin();
         manager.persist( produto );

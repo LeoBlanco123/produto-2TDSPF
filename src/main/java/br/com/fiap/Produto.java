@@ -1,18 +1,36 @@
 package br.com.fiap;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "TB_2TDSPF_PRODUTO")
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PRODUTO")
+    @SequenceGenerator(
+            name = "SQ_PRODUTO",
+            sequenceName = "SQ_PRODUTO",
+            initialValue = 1,
+            allocationSize = 1
+    )
+    @Column(name = "ID_PRODUTO")
     private Long id;
 
+    @Column(name = "NM_PRODUTO")
     private String nome;
+
+    @Column(name = "PRECO")
+    private Double preco;
+
+    public Produto() {
+    }
+
+    public Produto(Long id, String nome, Double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+    }
 
     public Long getId() {
         return id;
@@ -29,6 +47,15 @@ public class Produto {
 
     public Produto setNome(String nome) {
         this.nome = nome;
+        return this;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public Produto setPreco(Double preco) {
+        this.preco = preco;
         return this;
     }
 }
