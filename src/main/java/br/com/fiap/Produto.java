@@ -23,13 +23,33 @@ public class Produto {
     @Column(name = "PRECO")
     private Double preco;
 
+
+    @ManyToOne
+    @JoinColumn(
+            name = "SABOR",
+            referencedColumnName = "ID_SABOR",
+            foreignKey = @ForeignKey(name = "FK_SABOR_PRODUTO")
+    )
+    private Sabor sabor;
+
+
     public Produto() {
     }
 
-    public Produto(Long id, String nome, Double preco) {
+    public Produto(Long id, String nome, Double preco, Sabor sabor) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+        this.sabor = sabor;
+    }
+
+    public Sabor getSabor() {
+        return sabor;
+    }
+
+    public Produto setSabor(Sabor sabor) {
+        this.sabor = sabor;
+        return this;
     }
 
     public Long getId() {
@@ -57,5 +77,16 @@ public class Produto {
     public Produto setPreco(Double preco) {
         this.preco = preco;
         return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", sabor=" + sabor +
+                '}';
     }
 }
