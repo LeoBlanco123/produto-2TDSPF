@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String dia = LocalDate.now().getDayOfWeek().equals(DayOfWeek.THURSDAY) ? "casa" : "fiap";
+        String dia = LocalDate.now().getDayOfWeek().equals(DayOfWeek.MONDAY) ? "fiap" : "casa";
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(dia);
         EntityManager manager = factory.createEntityManager();
@@ -44,6 +44,8 @@ public class Main {
         produto.setOpcionais(opcionals);
 
         manager.getTransaction().begin();
+
+        opcionals.forEach(manager::persist);
         manager.persist(manjericao);
         manager.persist(produto);
         manager.getTransaction().commit();
