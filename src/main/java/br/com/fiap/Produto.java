@@ -1,7 +1,16 @@
 package br.com.fiap;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "TB_2TDSPF_PRODUTO")
 public class Produto {
@@ -24,7 +33,7 @@ public class Produto {
     private Double preco;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
             name = "SABOR",
             referencedColumnName = "ID_SABOR",
@@ -33,60 +42,25 @@ public class Produto {
     private Sabor sabor;
 
 
-    public Produto() {
-    }
-
-    public Produto(Long id, String nome, Double preco, Sabor sabor) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-        this.sabor = sabor;
-    }
-
-    public Sabor getSabor() {
-        return sabor;
-    }
-
-    public Produto setSabor(Sabor sabor) {
-        this.sabor = sabor;
-        return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Produto setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Produto setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public Produto setPreco(Double preco) {
-        this.preco = preco;
-        return this;
-    }
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "TB_2TDSPF_PRODUTO_OPCIONAL",
+            joinColumns = {
+                    @JoinColumn(
+                            name = "PRODUTO",
+                            referencedColumnName = "ID_PRODUTO",
+                            foreignKey = @ForeignKey(name = "FK_PRODUTO_OPCIONAL")
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(
+                            name = "OPCIONAL",
+                            referencedColumnName = "ID_OPCIONAL",
+                            foreignKey = @ForeignKey(name = "FK_OPCIONAL_PRODUTO")
+                    )
+            }
+    )
+    private Set<Opcional> opcionais = new LinkedHashSet<>();
 
 
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", sabor=" + sabor +
-                '}';
-    }
 }
