@@ -14,7 +14,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <dependencies>
+
+        <!--        https://projectlombok.org/#-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
         <dependency>
@@ -22,6 +31,7 @@
             <artifactId>ojdbc10</artifactId>
             <version>19.22.0.0</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
@@ -38,5 +48,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>
