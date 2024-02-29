@@ -31,7 +31,6 @@ public class Main {
 
         Opcional cocaCola = new Opcional(null, "Coca Cola", 19.99);
 
-
         Set<Opcional> opcionals = Stream
                 .of(cocaCola, bordaPaozinho, bordaDeCatupiri)
                 .collect(Collectors.toSet());
@@ -45,6 +44,7 @@ public class Main {
         manager.getTransaction().begin();
 
         opcionals.forEach(manager::persist);
+
         manager.persist(manjericao);
         manager.persist(produto);
         manager.getTransaction().commit();
