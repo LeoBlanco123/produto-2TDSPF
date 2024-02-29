@@ -22,7 +22,6 @@ public class Sabor {
     @Column(name = "DS_SABOR")
     private String descricao;
 
-
     public Long getId() {
         return id;
     }
@@ -50,7 +49,6 @@ public class Sabor {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -59,6 +57,5 @@ public class Sabor {
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 '}';
-
     }
 }

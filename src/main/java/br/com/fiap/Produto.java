@@ -23,7 +23,6 @@ public class Produto {
     @Column(name = "PRECO")
     private Double preco;
 
-
     @ManyToOne
     @JoinColumn(
             name = "SABOR",
@@ -31,7 +30,6 @@ public class Produto {
             foreignKey = @ForeignKey(name = "FK_SABOR_PRODUTO")
     )
     private Sabor sabor;
-
 
     public Produto() {
     }
@@ -78,7 +76,6 @@ public class Produto {
         this.preco = preco;
         return this;
     }
-
 
     @Override
     public String toString() {

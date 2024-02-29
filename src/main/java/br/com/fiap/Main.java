@@ -19,7 +19,6 @@ public class Main {
         manjericao.setNome( "Manjericão" );
         manjericao.setDescricao( "Maravilhoso manjericão plantado e colhido pelos mais belos agricultores do Alegrete." );
 
-
         Produto produto = new Produto();
         produto.setNome( "Pizza" ).setPreco( 69.99 );
         produto.setSabor( manjericao );
@@ -31,5 +30,6 @@ public class Main {
 
         factory.close();
         manager.close();
+
     }
 }
