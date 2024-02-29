@@ -79,7 +79,6 @@ public class Main {
                 .cardapio( cardapio )
                 .build();
 
-
         manager.getTransaction().begin();
 
         manager.persist( pizzaria );
