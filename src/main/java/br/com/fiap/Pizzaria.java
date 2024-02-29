@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -64,6 +66,6 @@ public class Pizzaria {
                   )
             }
     )
-    private List<Produto> cardapio;
+    private Set<Produto> cardapio = new LinkedHashSet<>();
 
 }
