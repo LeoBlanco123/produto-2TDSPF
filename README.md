@@ -1,5 +1,5 @@
 
-# 🍕 🤓👍🏾 Benezinho's Pizzaria
+# 🍕 🤓👍🏾 Blanco Pizzaria
 
 
 ## Diagrama de Classes
